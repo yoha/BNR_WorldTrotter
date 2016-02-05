@@ -17,12 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="212" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="91v-Sa-Z9n">
-                                <rect key="frame" x="245" y="28" width="111" height="84"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="70"/>
-                                <color key="textColor" red="0.88235294117647056" green="0.34509803921568627" blue="0.16078431372549018" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="degrees Fahrenheit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axG-O2-mcb">
                                 <rect key="frame" x="147" y="120" width="306" height="43"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
@@ -47,24 +41,35 @@
                                 <color key="textColor" red="0.88235294119999996" green="0.34509803919999998" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="value" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="diJ-jo-IJC">
+                                <rect key="frame" x="175" y="28" width="250" height="84"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="Rw9-ky-SVq"/>
+                                </constraints>
+                                <color key="textColor" red="0.88235294119999996" green="0.34509803919999998" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="70"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431372549022" green="0.95686274509803915" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="RSX-0G-bRx" firstAttribute="top" secondItem="5wv-zO-Crz" secondAttribute="bottom" constant="8" id="1uE-Qa-fAW"/>
+                            <constraint firstItem="diJ-jo-IJC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9YZ-O5-ZQI"/>
                             <constraint firstItem="5wv-zO-Crz" firstAttribute="top" secondItem="axG-O2-mcb" secondAttribute="bottom" constant="8" id="9km-sQ-L8j"/>
-                            <constraint firstItem="91v-Sa-Z9n" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="UKF-px-nkS"/>
+                            <constraint firstItem="diJ-jo-IJC" firstAttribute="centerX" secondItem="axG-O2-mcb" secondAttribute="centerX" id="XBq-vw-07B"/>
                             <constraint firstItem="RSX-0G-bRx" firstAttribute="centerX" secondItem="axG-O2-mcb" secondAttribute="centerX" id="ZNe-0b-iFH"/>
-                            <constraint firstItem="91v-Sa-Z9n" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="haN-dh-X2j"/>
+                            <constraint firstItem="diJ-jo-IJC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="bKU-e4-eij"/>
                             <constraint firstItem="rsR-Co-Q9N" firstAttribute="centerX" secondItem="axG-O2-mcb" secondAttribute="centerX" id="mju-dM-Oze"/>
                             <constraint firstItem="5wv-zO-Crz" firstAttribute="centerX" secondItem="axG-O2-mcb" secondAttribute="centerX" id="muF-v5-OXk"/>
                             <constraint firstItem="rsR-Co-Q9N" firstAttribute="top" secondItem="RSX-0G-bRx" secondAttribute="bottom" constant="8" id="nOZ-LB-IOl"/>
-                            <constraint firstItem="axG-O2-mcb" firstAttribute="top" secondItem="91v-Sa-Z9n" secondAttribute="bottom" constant="8" id="pOS-o5-5fi"/>
-                            <constraint firstItem="91v-Sa-Z9n" firstAttribute="centerX" secondItem="axG-O2-mcb" secondAttribute="centerX" id="tTC-Eq-8Ua"/>
+                            <constraint firstItem="axG-O2-mcb" firstAttribute="top" secondItem="diJ-jo-IJC" secondAttribute="bottom" constant="8" id="oBk-wb-o9G"/>
+                            <constraint firstItem="diJ-jo-IJC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tf2-U9-9gw"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="227" y="539"/>
         </scene>
     </scenes>
 </document>
