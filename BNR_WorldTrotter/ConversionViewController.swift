@@ -10,6 +10,23 @@ import UIKit
 
 class ConversionViewController: UIViewController {
     
+    // MARK: - Stored Properties
+    
+    var fahrenheitValue: Double? {
+        didSet {
+            self.celsiusLabel.text = self.celsiusValue != nil ? "\(self.celsiusValue)" : "???"
+        }
+    }
+    
+    var celsiusValue: Double? {
+        if let validFahrenheitValue = self.fahrenheitValue {
+            return self.convertToCelsiusFromFahrenheit(validFahrenheitValue)
+        }
+        else {
+            return nil
+        }
+    }
+    
     // MARK: - IBOutlet Properties
     
     @IBOutlet weak var celsiusLabel: UILabel!
@@ -18,14 +35,20 @@ class ConversionViewController: UIViewController {
     // MARK: - IBAction Methods
     
     @IBAction func fahrenheitTextFieldEditingChanged(textfield: UITextField) {
-        guard let validTextFieldText = textfield.text where !validTextFieldText.isEmpty else {
-            celsiusLabel.text = "???"
+        guard let validTextFieldText = textfield.text where !validTextFieldText.isEmpty, let doubleValue = Double(validTextFieldText) else {
+            self.fahrenheitValue = nil
             return
         }
-        self.celsiusLabel.text = validTextFieldText
+        self.fahrenheitValue = doubleValue
     }
     
     @IBAction func dismissKeyboard(sender: UITapGestureRecognizer) {
         self.fahrenheitTextField.resignFirstResponder()
+    }
+    
+    // MARK: - Helper Methods
+
+    private func convertToCelsiusFromFahrenheit(value: Double) -> Double {
+        return (value - 32) * (5 / 9)
     }
 }
