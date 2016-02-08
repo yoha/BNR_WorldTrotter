@@ -14,7 +14,7 @@ class ConversionViewController: UIViewController {
     
     var fahrenheitValue: Double? {
         didSet {
-            self.celsiusLabel.text = self.celsiusValue != nil ? "\(self.celsiusValue)" : "???"
+            self.updateCelsiusLabel()
         }
     }
     
@@ -26,6 +26,14 @@ class ConversionViewController: UIViewController {
             return nil
         }
     }
+    
+    let numberFormatter: NSNumberFormatter = {
+        let nf = NSNumberFormatter()
+        nf.numberStyle = .DecimalStyle
+        nf.minimumFractionDigits = 0
+        nf.maximumFractionDigits = 1
+        return nf
+    }()
     
     // MARK: - IBOutlet Properties
     
@@ -50,5 +58,14 @@ class ConversionViewController: UIViewController {
 
     private func convertToCelsiusFromFahrenheit(value: Double) -> Double {
         return (value - 32) * (5 / 9)
+    }
+    
+    private func updateCelsiusLabel() {
+        if let validCelsiusValue = self.celsiusValue {
+            self.celsiusLabel.text = self.numberFormatter.stringFromNumber(validCelsiusValue)
+        }
+        else {
+            self.celsiusLabel.text = "???"
+        }
     }
 }
