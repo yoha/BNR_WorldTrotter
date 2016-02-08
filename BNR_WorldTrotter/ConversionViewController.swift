@@ -12,6 +12,9 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Stored Properties
     
+    let lowercaseLetterCharacters = NSCharacterSet.lowercaseLetterCharacterSet()
+    let uppercaseLetterCharacters = NSCharacterSet.uppercaseLetterCharacterSet()
+    
     var fahrenheitValue: Double? {
         didSet {
             self.updateCelsiusLabel()
@@ -58,7 +61,12 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         guard let validText = textField.text else { return false }
-        return validText.rangeOfString(".") != nil && string.characters.contains(".") ? false : true
+        guard string.rangeOfCharacterFromSet(self.lowercaseLetterCharacters) == nil else { return false }
+        guard string.rangeOfCharacterFromSet(self.uppercaseLetterCharacters) == nil else { return false }
+        if validText.rangeOfString(".") != nil {
+            guard !string.characters.contains(".") else { return false }
+        }
+        return true
     }
     
     // MARK: - Helper Methods
