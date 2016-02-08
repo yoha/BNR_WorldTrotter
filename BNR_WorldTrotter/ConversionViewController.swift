@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConversionViewController: UIViewController {
+class ConversionViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Stored Properties
     
@@ -52,6 +52,13 @@ class ConversionViewController: UIViewController {
     
     @IBAction func dismissKeyboard(sender: UITapGestureRecognizer) {
         self.fahrenheitTextField.resignFirstResponder()
+    }
+    
+    // MARK: - UITextFieldDelegate Methods
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        guard let validText = textField.text else { return false }
+        return validText.rangeOfString(".") != nil && string.characters.contains(".") ? false : true
     }
     
     // MARK: - Helper Methods
