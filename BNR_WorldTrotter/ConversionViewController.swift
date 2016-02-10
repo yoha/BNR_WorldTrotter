@@ -69,6 +69,12 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    // MARK: - UIViewController Methods
+    
+    override func viewDidLoad() {
+        print("ConversionViewController loaded its hierarchy of views")
+    }
+    
     // MARK: - Helper Methods
 
     private func convertToCelsiusFromFahrenheit(value: Double) -> Double {
