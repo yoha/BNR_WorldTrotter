@@ -8,12 +8,15 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     // MARK: - Stored Properties
     
     var mapView: MKMapView!
+    var locationManager: CLLocationManager!
+    var currentLocation: CLLocation!
     
     // MARK: - UIViewController Methods
     
@@ -41,6 +44,32 @@ class MapViewController: UIViewController {
         trailingConstraint.active = true
         
         segmentedControl.addTarget(self, action: "changeMapType:", forControlEvents: .ValueChanged)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        guard CLLocationManager.locationServicesEnabled() else { return }
+        self.locationManager = CLLocationManager()
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        self.mapView.showsUserLocation = true
+        self.locationManager.startUpdatingLocation()
+    }
+    
+    // MARK - CLLocationManagerDelegate
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        self.currentLocation = locations.last
+        let centerOfCurrentLocation = CLLocationCoordinate2D(latitude: self.currentLocation.coordinate.latitude, longitude: self.currentLocation.coordinate.longitude)
+        let regionOfMapToDisplay = MKCoordinateRegion(center: centerOfCurrentLocation, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
+        self.mapView.setRegion(regionOfMapToDisplay, animated: true)
+        self.locationManager.stopUpdatingHeading()
+    }
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("An error has occured: \(error.localizedDescription)")
     }
     
     // MARK: - Helper Methods
