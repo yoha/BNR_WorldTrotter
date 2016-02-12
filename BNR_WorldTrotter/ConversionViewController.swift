@@ -14,13 +14,15 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
     
     let lowercaseLetterCharacters = NSCharacterSet.lowercaseLetterCharacterSet()
     let uppercaseLetterCharacters = NSCharacterSet.uppercaseLetterCharacterSet()
-    
+
+    // property observer
     var fahrenheitValue: Double? {
         didSet {
             self.updateCelsiusLabel()
         }
     }
     
+    // computed property
     var celsiusValue: Double? {
         if let validFahrenheitValue = self.fahrenheitValue {
             return self.convertToCelsiusFromFahrenheit(validFahrenheitValue)
