@@ -17,12 +17,6 @@ class MapViewController: UIViewController {
     
     // MARK: - UIViewController Methods
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        print("MapViewController loaded its hierarchy of views")
-    }
-    
     override func loadView() {
         super.loadView()
         
@@ -35,9 +29,12 @@ class MapViewController: UIViewController {
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(segmentedControl)
         
-        let topConstraint = segmentedControl.topAnchor.constraintEqualToAnchor(self.view.topAnchor)
+        let topConstraint = segmentedControl.topAnchor.constraintEqualToAnchor(self.topLayoutGuide.bottomAnchor, constant: 8.0)
         let leadingConstraint = segmentedControl.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor)
         let trailingConstraint = segmentedControl.trailingAnchor.constraintEqualToAnchor(self.view.trailingAnchor)
+        topConstraint.active = true
+        leadingConstraint.active = true
+        trailingConstraint.active = true
         
     }
 }
