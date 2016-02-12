@@ -34,11 +34,22 @@ class MapViewController: UIViewController {
 //        let trailingConstraint = segmentedControl.trailingAnchor.constraintEqualToAnchor(self.view.trailingAnchor)
         
         let topConstraint = segmentedControl.topAnchor.constraintEqualToAnchor(self.topLayoutGuide.bottomAnchor, constant: 8.0)
-        let leadingConstraint = segmentedControl.leadingAnchor.constraintEqualToAnchor(view.layoutMarginsGuide.leadingAnchor)
-        let trailingConstraint = segmentedControl.trailingAnchor.constraintEqualToAnchor(view.layoutMarginsGuide.trailingAnchor)
+        let leadingConstraint = segmentedControl.leadingAnchor.constraintEqualToAnchor(self.view.layoutMarginsGuide.leadingAnchor)
+        let trailingConstraint = segmentedControl.trailingAnchor.constraintEqualToAnchor(self.view.layoutMarginsGuide.trailingAnchor)
         topConstraint.active = true
         leadingConstraint.active = true
         trailingConstraint.active = true
         
+        segmentedControl.addTarget(self, action: "changeMapType:", forControlEvents: .ValueChanged)
+    }
+    
+    // MARK: - Helper Methods
+    
+    func changeMapType(segmentedControl: UISegmentedControl) {
+        switch segmentedControl.selectedSegmentIndex {
+        case 1: self.mapView.mapType = MKMapType.Hybrid
+        case 2: self.mapView.mapType = .Satellite
+        default: self.mapView.mapType = .Standard
+        }
     }
 }
