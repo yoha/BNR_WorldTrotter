@@ -109,8 +109,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="fpi-RD-LSi"/>
                         <segue destination="zn6-fH-AT0" kind="relationship" relationship="viewControllers" id="rNU-gO-1jX"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="fpi-RD-LSi"/>
                         <segue destination="nh7-vI-La0" kind="relationship" relationship="viewControllers" id="CiP-Fd-caO"/>
                     </connections>
                 </tabBarController>
