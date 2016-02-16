@@ -122,7 +122,7 @@
         <scene sceneID="3Rv-0u-lYM">
             <objects>
                 <viewController id="nh7-vI-La0" customClass="WebViewController" customModule="BNR_WorldTrotter" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Web" id="CBO-fj-phv"/>
+                    <tabBarItem key="tabBarItem" title="Web" image="MapIcon" id="CBO-fj-phv"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vFg-3S-IUO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

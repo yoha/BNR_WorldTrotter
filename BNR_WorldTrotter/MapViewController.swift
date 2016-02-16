@@ -17,6 +17,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     var mapView: MKMapView!
     var locationManager: CLLocationManager!
     var currentLocation: CLLocation!
+    var cycleLocationIndex: Int!
+    var university: ChosenLocations!
+    var workplace: ChosenLocations!
+    var home: ChosenLocations!
     
     // MARK: - UIViewController Methods
     
@@ -29,6 +33,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.university = ChosenLocations(title: "San Jose State University", coordinate: CLLocationCoordinate2D(latitude: 37.335432, longitude: -121.881276))
+        self.workplace = ChosenLocations(title: "Apple Store Los Gatos", coordinate: CLLocationCoordinate2D(latitude: 37.223653, longitude: -121.983850))
+        self.home = ChosenLocations(title: "Home", coordinate: CLLocationCoordinate2DMake(37.321255, -121.967902))
         
         //*** Segmented Control begins
         
@@ -66,12 +74,33 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         // http://stackoverflow.com/questions/26180822/swift-adding-constraints-programmatically/26181982#26181982
         
         // NSLayoutAnchor style (ios 9.0*)
-        let widthConstraint = locateMeButton.widthAnchor.constraintEqualToAnchor(nil, constant: 100.0)
-        let heightConstraint = locateMeButton.heightAnchor.constraintEqualToAnchor(nil, constant: 35.0)
-        let horizontalConstraint = locateMeButton.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor)
-        let verticalConstraint = locateMeButton.bottomAnchor.constraintEqualToAnchor(self.bottomLayoutGuide.topAnchor, constant: -28.0)
-        NSLayoutConstraint.activateConstraints([widthConstraint, heightConstraint, horizontalConstraint, verticalConstraint])
+        let locateMeButtonWidthConstraint = locateMeButton.widthAnchor.constraintEqualToAnchor(nil, constant: 120.0)
+        let locateMeButtonHeightConstraint = locateMeButton.heightAnchor.constraintEqualToAnchor(nil, constant: 35.0)
+        let locateMeButtonHorizontalConstraint = locateMeButton.trailingAnchor.constraintEqualToAnchor(self.view.trailingAnchor, constant: -15.0)
+        let locateMeButtonVerticalConstraint = locateMeButton.bottomAnchor.constraintEqualToAnchor(self.bottomLayoutGuide.topAnchor, constant: -28.0)
+        NSLayoutConstraint.activateConstraints([locateMeButtonWidthConstraint, locateMeButtonHeightConstraint, locateMeButtonHorizontalConstraint, locateMeButtonVerticalConstraint])
         
+        let cycleLocationsButton = UIButton(type: .System)
+        cycleLocationsButton.titleLabel?.font = UIFont.systemFontOfSize(14.0)
+        cycleLocationsButton.tintColor = UIColor.whiteColor()
+        cycleLocationsButton.setTitle("Cycle Locations", forState: .Normal)
+        cycleLocationsButton.layer.cornerRadius = 4.0
+        cycleLocationsButton.layer.backgroundColor = UIColor(red: 0.0, green: 0.48, blue: 1.0, alpha: 1.0).CGColor
+        cycleLocationsButton.translatesAutoresizingMaskIntoConstraints = false
+        cycleLocationsButton.addTarget(self, action: "cycleLocations", forControlEvents: .TouchUpInside)
+        self.view.addSubview(cycleLocationsButton)
+        
+        // NSLayoutConstraint style
+        let cycleLocationsButtonHorizontalConstraint = NSLayoutConstraint(item: cycleLocationsButton, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Leading, multiplier: 1.0, constant: 15.0)
+        let cycleLocationsButtonVerticalConstraint = NSLayoutConstraint(item: cycleLocationsButton, attribute: .Bottom, relatedBy: .Equal, toItem: self.bottomLayoutGuide, attribute: .Top, multiplier: 1.0, constant: -28.0)
+        let cycleLocationsButtonWidthConstraint = NSLayoutConstraint(item: cycleLocationsButton, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 120.0)
+        let cycleLocationsButtonHeightConstriant = NSLayoutConstraint(item: cycleLocationsButton, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 35.0)
+        cycleLocationsButtonHorizontalConstraint.active = true
+        cycleLocationsButtonVerticalConstraint.active = true
+        cycleLocationsButtonWidthConstraint.active = true
+        cycleLocationsButtonHeightConstriant.active = true
+        
+
         /***
         // NSLayoutConstraint style
         let horizontalConstraint = NSLayoutConstraint(item: locateMeButton, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
@@ -139,5 +168,34 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             print("Authorized to use your location. Requesting it...")
             self.locationManager.requestLocation()
         }
+    }
+    
+    func cycleLocations() {
+        if self.cycleLocationIndex == nil || self.cycleLocationIndex == 2 {
+            self.cycleLocationIndex = 0
+            self.pinpointAndAnnotateLocationOnMap(self.university)
+        }
+        else if self.cycleLocationIndex == 0 {
+            self.cycleLocationIndex = 1
+            self.pinpointAndAnnotateLocationOnMap(self.workplace)
+        }
+        else if self.cycleLocationIndex == 1 {
+            self.cycleLocationIndex = 2
+            self.pinpointAndAnnotateLocationOnMap(self.home)
+        }
+    }
+    
+    private func pinpointAndAnnotateLocationOnMap(location: ChosenLocations) {
+        let latitudeDeltaZoomLevel: CLLocationDegrees = 0.007
+        let longitudeDeltaZoomLevel: CLLocationDegrees = 0.007
+        let areaSpannedByMapRegion: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: latitudeDeltaZoomLevel, longitudeDelta: longitudeDeltaZoomLevel)
+        let geographicalCoordinateStruct: CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+        let mapRegionToDisplay: MKCoordinateRegion = MKCoordinateRegionMake(geographicalCoordinateStruct, areaSpannedByMapRegion)
+        self.mapView.setRegion(mapRegionToDisplay, animated: true)
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = geographicalCoordinateStruct
+        annotation.title = location.title ?? "unspecified"
+        self.mapView.addAnnotation(annotation)
     }
 }
