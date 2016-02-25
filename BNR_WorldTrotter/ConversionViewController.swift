@@ -48,11 +48,11 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
     // MARK: - IBAction Methods
     
     @IBAction func fahrenheitTextFieldEditingChanged(textfield: UITextField) {
-        guard let validTextFieldText = textfield.text where !validTextFieldText.isEmpty, let doubleValue = Double(validTextFieldText) else {
+        guard let validTextFieldText = textfield.text where !validTextFieldText.isEmpty, let validValue = numberFormatter.numberFromString(validTextFieldText) else {
             self.fahrenheitValue = nil
             return
         }
-        self.fahrenheitValue = doubleValue
+        self.fahrenheitValue = validValue.doubleValue
     }
     
     @IBAction func dismissKeyboard(sender: UITapGestureRecognizer) {
@@ -62,11 +62,13 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
     // MARK: - UITextFieldDelegate Methods
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        let currentLocale = NSLocale.currentLocale()
+        guard let decimalSeparator = currentLocale.objectForKey(NSLocaleDecimalSeparator) as? String else { return false }
         guard let validText = textField.text else { return false }
         guard string.rangeOfCharacterFromSet(self.lowercaseLetterCharacters) == nil else { return false }
         guard string.rangeOfCharacterFromSet(self.uppercaseLetterCharacters) == nil else { return false }
-        if validText.rangeOfString(".") != nil {
-            guard !string.characters.contains(".") else { return false }
+        if validText.rangeOfString(decimalSeparator) != nil {
+            guard let validDecimalSeparator = decimalSeparator.characters.first where !string.characters.contains(validDecimalSeparator) else { return false }
         }
         return true
     }
