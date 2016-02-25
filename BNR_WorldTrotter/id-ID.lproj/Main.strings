@@ -1,0 +1,24 @@
+
+/* Class = "UILabel"; text = "is really"; ObjectID = "5wv-zO-Crz"; */
+"5wv-zO-Crz.text" = "sebenarnya adalah";
+
+/* Class = "UITabBarItem"; title = "Web"; ObjectID = "CBO-fj-phv"; */
+"CBO-fj-phv.title" = "Jaringan";
+
+/* Class = "UILabel"; text = "100"; ObjectID = "RSX-0G-bRx"; */
+"RSX-0G-bRx.text" = "100";
+
+/* Class = "UILabel"; text = "degrees Fahrenheit"; ObjectID = "axG-O2-mcb"; */
+"axG-O2-mcb.text" = "derajat Fahrenheit";
+
+/* Class = "UITextField"; placeholder = "value"; ObjectID = "diJ-jo-IJC"; */
+"diJ-jo-IJC.placeholder" = "Nilai";
+
+/* Class = "UITabBarItem"; title = "Convert"; ObjectID = "pRS-KA-Onu"; */
+"pRS-KA-Onu.title" = "Merubah";
+
+/* Class = "UILabel"; text = "degrees Celsius"; ObjectID = "rsR-Co-Q9N"; */
+"rsR-Co-Q9N.text" = "derajat Celsius";
+
+/* Class = "UITabBarItem"; title = "Map"; ObjectID = "v86-5h-SXr"; */
+"v86-5h-SXr.title" = "Peta";

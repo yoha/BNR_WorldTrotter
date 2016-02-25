@@ -29,6 +29,8 @@
 		652EE0E81C7F078300959CE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		652EE0EA1C7F078500959CE7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		652EE0EC1C7F079B00959CE7 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		652EE0ED1C7F4C4400959CE7 /* id-ID */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "id-ID"; path = "id-ID.lproj/Main.strings"; sourceTree = "<group>"; };
+		652EE0EE1C7F4C4400959CE7 /* id-ID */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "id-ID"; path = "id-ID.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		6556B6481C6B882A00A6AAB8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		6556B64A1C6B950300A6AAB8 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		655D1E7E1C650B5000C29260 /* ConversionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversionViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				en,
 				Base,
 				es,
+				"id-ID",
 			);
 			mainGroup = 65C3F30B1C6250F700DBBC07;
 			productRefGroup = 65C3F3151C6250F700DBBC07 /* Products */;
@@ -179,6 +182,7 @@
 				652EE0E81C7F078300959CE7 /* Base */,
 				652EE0EA1C7F078500959CE7 /* en */,
 				652EE0EC1C7F079B00959CE7 /* es */,
+				652EE0EE1C7F4C4400959CE7 /* id-ID */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -189,6 +193,7 @@
 				65C3F31C1C6250F700DBBC07 /* Base */,
 				652EE0D51C7F011400959CE7 /* en */,
 				652EE0D61C7F017F00959CE7 /* es */,
+				652EE0ED1C7F4C4400959CE7 /* id-ID */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
