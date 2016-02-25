@@ -40,7 +40,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         //*** Segmented Control begins
         
-        let segmentedControl = UISegmentedControl(items: ["Standard", "Hybrid", "Satellite"])
+        let standardMapString = NSLocalizedString("Standard", comment: "Standard map view")
+        let satelliteMapString = NSLocalizedString("Satellite", comment: "Satellite map view")
+        let hybridMapString = NSLocalizedString("Hybrid", comment: "Hybrid map view")
+        
+        let segmentedControl = UISegmentedControl(items: [standardMapString, satelliteMapString, hybridMapString])
         segmentedControl.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
@@ -64,7 +68,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         let locateMeButton = UIButton(type: UIButtonType.System)
         locateMeButton.titleLabel?.font = UIFont.systemFontOfSize(14)
         locateMeButton.tintColor = UIColor.whiteColor()
-        locateMeButton.setTitle("Locate Me", forState: UIControlState.Normal)
+        locateMeButton.setTitle(NSLocalizedString("Locate Me", comment: "Locate me button"), forState: UIControlState.Normal)
         locateMeButton.layer.cornerRadius = 4.0
         locateMeButton.layer.backgroundColor = UIColor(red: 0.0, green: 0.48, blue: 1.0, alpha: 1.0).CGColor
         locateMeButton.translatesAutoresizingMaskIntoConstraints = false
@@ -74,8 +78,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         // http://stackoverflow.com/questions/26180822/swift-adding-constraints-programmatically/26181982#26181982
         
         // NSLayoutAnchor style (ios 9.0*)
-        let locateMeButtonWidthConstraint = locateMeButton.widthAnchor.constraintEqualToAnchor(nil, constant: 120.0)
-        let locateMeButtonHeightConstraint = locateMeButton.heightAnchor.constraintEqualToAnchor(nil, constant: 35.0)
+        let locateMeButtonWidthConstraint = locateMeButton.widthAnchor.constraintEqualToAnchor(nil, constant: 150.0)
+        let locateMeButtonHeightConstraint = locateMeButton.heightAnchor.constraintEqualToAnchor(nil, constant: 30.0)
         let locateMeButtonHorizontalConstraint = locateMeButton.trailingAnchor.constraintEqualToAnchor(self.view.trailingAnchor, constant: -15.0)
         let locateMeButtonVerticalConstraint = locateMeButton.bottomAnchor.constraintEqualToAnchor(self.bottomLayoutGuide.topAnchor, constant: -28.0)
         NSLayoutConstraint.activateConstraints([locateMeButtonWidthConstraint, locateMeButtonHeightConstraint, locateMeButtonHorizontalConstraint, locateMeButtonVerticalConstraint])
@@ -83,7 +87,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         let cycleLocationsButton = UIButton(type: .System)
         cycleLocationsButton.titleLabel?.font = UIFont.systemFontOfSize(14.0)
         cycleLocationsButton.tintColor = UIColor.whiteColor()
-        cycleLocationsButton.setTitle("Cycle Locations", forState: .Normal)
+        cycleLocationsButton.setTitle(NSLocalizedString("Cycle Locations", comment: "Cycle locations button"), forState: .Normal)
         cycleLocationsButton.layer.cornerRadius = 4.0
         cycleLocationsButton.layer.backgroundColor = UIColor(red: 0.0, green: 0.48, blue: 1.0, alpha: 1.0).CGColor
         cycleLocationsButton.translatesAutoresizingMaskIntoConstraints = false
@@ -93,8 +97,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         // NSLayoutConstraint style
         let cycleLocationsButtonHorizontalConstraint = NSLayoutConstraint(item: cycleLocationsButton, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Leading, multiplier: 1.0, constant: 15.0)
         let cycleLocationsButtonVerticalConstraint = NSLayoutConstraint(item: cycleLocationsButton, attribute: .Bottom, relatedBy: .Equal, toItem: self.bottomLayoutGuide, attribute: .Top, multiplier: 1.0, constant: -28.0)
-        let cycleLocationsButtonWidthConstraint = NSLayoutConstraint(item: cycleLocationsButton, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 120.0)
-        let cycleLocationsButtonHeightConstriant = NSLayoutConstraint(item: cycleLocationsButton, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 35.0)
+        let cycleLocationsButtonWidthConstraint = NSLayoutConstraint(item: cycleLocationsButton, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 150.0)
+        let cycleLocationsButtonHeightConstriant = NSLayoutConstraint(item: cycleLocationsButton, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 30.0)
         cycleLocationsButtonHorizontalConstraint.active = true
         cycleLocationsButtonVerticalConstraint.active = true
         cycleLocationsButtonWidthConstraint.active = true

@@ -11,6 +11,7 @@
 		6517835B1C6DBEF3006D55CD /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6517835A1C6DBEF3006D55CD /* WebViewController.swift */; };
 		6517835D1C6DC07B006D55CD /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6517835C1C6DC07B006D55CD /* WebKit.framework */; };
 		6517835E1C6DC083006D55CD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6556B6481C6B882A00A6AAB8 /* MapKit.framework */; };
+		652EE0E71C7F078300959CE7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 652EE0E91C7F078300959CE7 /* Localizable.strings */; };
 		6556B64B1C6B950300A6AAB8 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6556B64A1C6B950300A6AAB8 /* MapViewController.swift */; };
 		655D1E7F1C650B5000C29260 /* ConversionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655D1E7E1C650B5000C29260 /* ConversionViewController.swift */; };
 		65C3F3181C6250F700DBBC07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C3F3171C6250F700DBBC07 /* AppDelegate.swift */; };
@@ -23,6 +24,11 @@
 		650ED4FB1C722BEB00644AB8 /* ChosenLocations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChosenLocations.swift; sourceTree = "<group>"; };
 		6517835A1C6DBEF3006D55CD /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		6517835C1C6DC07B006D55CD /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		652EE0D51C7F011400959CE7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		652EE0D61C7F017F00959CE7 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		652EE0E81C7F078300959CE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		652EE0EA1C7F078500959CE7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		652EE0EC1C7F079B00959CE7 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6556B6481C6B882A00A6AAB8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		6556B64A1C6B950300A6AAB8 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		655D1E7E1C650B5000C29260 /* ConversionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversionViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +80,7 @@
 				6517835A1C6DBEF3006D55CD /* WebViewController.swift */,
 				650ED4FB1C722BEB00644AB8 /* ChosenLocations.swift */,
 				65C3F31B1C6250F700DBBC07 /* Main.storyboard */,
+				652EE0E91C7F078300959CE7 /* Localizable.strings */,
 				65C3F31E1C6250F700DBBC07 /* Assets.xcassets */,
 				65C3F3201C6250F700DBBC07 /* LaunchScreen.storyboard */,
 				65C3F3231C6250F700DBBC07 /* Info.plist */,
@@ -124,6 +131,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 65C3F30B1C6250F700DBBC07;
 			productRefGroup = 65C3F3151C6250F700DBBC07 /* Products */;
@@ -141,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65C3F3221C6250F700DBBC07 /* LaunchScreen.storyboard in Resources */,
+				652EE0E71C7F078300959CE7 /* Localizable.strings in Resources */,
 				65C3F31F1C6250F700DBBC07 /* Assets.xcassets in Resources */,
 				65C3F31D1C6250F700DBBC07 /* Main.storyboard in Resources */,
 			);
@@ -164,10 +173,22 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		652EE0E91C7F078300959CE7 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				652EE0E81C7F078300959CE7 /* Base */,
+				652EE0EA1C7F078500959CE7 /* en */,
+				652EE0EC1C7F079B00959CE7 /* es */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		65C3F31B1C6250F700DBBC07 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				65C3F31C1C6250F700DBBC07 /* Base */,
+				652EE0D51C7F011400959CE7 /* en */,
+				652EE0D61C7F017F00959CE7 /* es */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
